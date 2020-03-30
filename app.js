@@ -41,7 +41,7 @@ function getData() {
                     let dataList = document.createElement("ul")
 
                     let dataObject = element
-                    console.log(dataObject)
+
 
                     let newConfirmed = document.createElement('li')
                     newConfirmed.innerHTML = `Number of New confirmed cases : ${dataObject["NewConfirmed"]}`
@@ -76,6 +76,11 @@ function getData() {
 
 
                 }
+
+                let warning = document.createElement('h5')
+                warning.innerHTML = "Country not found!"
+                body.appendChild(warning)
+                console.log(warning)
 
 
             });

@@ -2,8 +2,19 @@
 let body = document.getElementById("body");
 
 
-let submitBtn = document.getElementById('submitBtn')
 
+let statsDiv = document.createElement('div')
+statsDiv.id = 'statsDiv'
+
+statsDiv.style = "d-none"
+statsDiv.className = "container p-3 mb-2 bg-primary text-white"
+
+body.appendChild(statsDiv)
+
+
+
+
+let submitBtn = document.getElementById('submitBtn')
 function getData() {
 
     var requestOptions = {
@@ -21,61 +32,38 @@ function getData() {
 
             result["Countries"].forEach(element => {
 
-
-
                 if (((element['Country'].toUpperCase())) === data.toUpperCase()) {
-
-
 
                     console.log('ok, country exists, the stats are the following:')
                     console.log(element)
 
-                    let statsDiv = document.createElement('div')
-                    statsDiv.id = 'statsDiv'
-                    body.appendChild(statsDiv)
+                    let dataObject = element;
 
-                    let countryHeader = document.createElement('h3')
-                    countryHeader.innerHTML = element['Country']
-                    statsDiv.appendChild(countryHeader)
-
-                    let dataList = document.createElement("ul")
-
-                    let dataObject = element
-
-
-                    let newConfirmed = document.createElement('li')
-                    newConfirmed.innerHTML = `Number of New confirmed cases : ${dataObject["NewConfirmed"]}`
-                    dataList.appendChild(newConfirmed)
-
-                    let totalConfirmed = document.createElement('li')
-                    totalConfirmed.innerHTML = `Total Confirmed cases : ${dataObject['TotalConfirmed']}`
-                    dataList.appendChild(totalConfirmed)
-
-                    let newDeaths = document.createElement('li')
-                    newDeaths.innerHTML = `New Recorded Deaths : ${dataObject["NewDeaths"]}`
-                    dataList.appendChild(newDeaths)
-
-                    let totalDeaths = document.createElement('li')
-                    totalDeaths.innerHTML = `Total Number of Deaths : ${dataObject['TotalDeaths']}`
-                    dataList.appendChild(totalDeaths)
-
-                    let newRecovered = document.createElement('li')
-                    newRecovered.innerHTML = `Number of people who recovered recently :${dataObject['NewRecovered']}`
-                    dataList.appendChild(newRecovered)
-
-                    let totalRecovered = document.createElement('li')
-                    totalRecovered.innerHTML = `Total number of people who have successfully recovered : ${dataObject['TotalRecovered']} `
-                    dataList.appendChild(totalRecovered)
-
-                    statsDiv.appendChild(dataList)
+                    statsDiv.style = "d-block"
 
 
 
 
+                    statsDiv.innerHTML = `<div id="statsDiv">
+                    <h3>${ element['Country']}</h3>
+                        <ul>
+                            <li>Number of New confirmed cases : ${dataObject["NewConfirmed"]}</li>
+                            <li>Total Confirmed cases :${dataObject['TotalConfirmed']}</li>
+                            <li>New Recorded Deaths : ${dataObject["NewDeaths"]}</li>
+                            <li>Total Number of Deaths : ${dataObject['TotalDeaths']}</li>
+                            <li>Number of people who recovered recently :${dataObject['NewRecovered']}</li>
+                            <li>Total number of people who have successfully recovered : ${dataObject['TotalRecovered']} </li>
+                    </ul>
+                    </div>`
 
+                }
+
+                else if (((element['Country'].toUpperCase())) !== data.toUpperCase()) {
 
 
                 }
+
+
 
 
 
@@ -102,8 +90,10 @@ submitBtn.addEventListener("click", () => {
 
 })
 
-document.getElementById('searchForm').addEventListener('submit', function (e) {
-    search(document.getElementById('searchText'));
-    e.preventDefault();
-}, false);
+//document.getElementById('searchForm').addEventListener('submit', function (e) {
+//    search(document.getElementById('searchText'));
+//    e.preventDefault();
+//}, false);
+
+
 

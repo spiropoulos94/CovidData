@@ -60,11 +60,11 @@ function getData() {
                     dataList.appendChild(totalDeaths)
 
                     let newRecovered = document.createElement('li')
-                    newRecovered.innerHTML = `Number of people who recovered recently ${dataObject['NewRecovered']}`
+                    newRecovered.innerHTML = `Number of people who recovered recently :${dataObject['NewRecovered']}`
                     dataList.appendChild(newRecovered)
 
                     let totalRecovered = document.createElement('li')
-                    totalRecovered.innerHTML = `Total number of people who have successfully recovered ${dataObject['TotalRecovered']} `
+                    totalRecovered.innerHTML = `Total number of people who have successfully recovered : ${dataObject['TotalRecovered']} `
                     dataList.appendChild(totalRecovered)
 
                     statsDiv.appendChild(dataList)

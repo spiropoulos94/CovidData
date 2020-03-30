@@ -77,10 +77,10 @@ function getData() {
 
                 }
 
-                let warning = document.createElement('h5')
-                warning.innerHTML = "Country not found!"
-                body.appendChild(warning)
-                console.log(warning)
+                //let warning = document.createElement('h5')
+                //warning.innerHTML = "Country not found!"
+                //body.appendChild(warning)
+                //console.log(warning)
 
 
             });

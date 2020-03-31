@@ -16,6 +16,8 @@ body.appendChild(statsDiv)
 
 let submitBtn = document.getElementById('submitBtn')
 function getData() {
+    let form = document.getElementById('countryname')
+    const data = form.value;
 
     var requestOptions = {
         method: 'GET',
@@ -27,12 +29,12 @@ function getData() {
 
         .then(result => {
             //JSONResponse = JSON.parse(result)
-            let form = document.getElementById('countryname')
-            let data = form.value;
+
+            ///isws prepei prwta na valeis ti tha kanei se periptwsh opou den vrei kanena onoma na kanei match gia na anagkastei na ta tsekarei ola
 
             result["Countries"].forEach(element => {
 
-                if (((element['Country'].toUpperCase())) === data.toUpperCase()) {
+                if ((element['Country'].toUpperCase()) === data.toUpperCase()) {
 
                     console.log('ok, country exists, the stats are the following:')
                     console.log(element)
@@ -40,10 +42,6 @@ function getData() {
                     let dataObject = element;
 
                     statsDiv.style = "d-block"
-
-
-
-
                     statsDiv.innerHTML = `<div id="statsDiv">
                     <h3>${ element['Country']}</h3>
                         <ul>
@@ -58,22 +56,11 @@ function getData() {
 
                 }
 
-                else if (((element['Country'].toUpperCase())) !== data.toUpperCase()) {
-
-
-                }
-
-
-
-
 
             })
 
 
-
-        })
-
-        .catch(error => console.log('error', error));
+        }).catch(error => console.log('error', error));
 
 }
 

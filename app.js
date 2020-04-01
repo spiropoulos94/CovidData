@@ -14,10 +14,11 @@ body.appendChild(statsDiv)
 
 
 
+
+
+
 let submitBtn = document.getElementById('submitBtn')
 function getData() {
-    let form = document.getElementById('countryname')
-    const data = form.value;
 
     var requestOptions = {
         method: 'GET',
@@ -26,41 +27,48 @@ function getData() {
 
     fetch("https://api.covid19api.com/summary", requestOptions)
         .then(response => response.json())
+        .then(response => response['Countries'])
+        .then(countries => {
 
-        .then(result => {
-            //JSONResponse = JSON.parse(result)
+            let form = document.getElementById('countryname')
+            let data = form.value;
 
-            ///isws prepei prwta na valeis ti tha kanei se periptwsh opou den vrei kanena onoma na kanei match gia na anagkastei na ta tsekarei ola
+            for (let i = 0; i < countries.length; i++) {
+                if (data.toUpperCase() === countries[i]['Country'].toUpperCase()) {
 
-            result["Countries"].forEach(element => {
+                    let country = countries[i]
 
-                if ((element['Country'].toUpperCase()) === data.toUpperCase()) {
-
-                    console.log('ok, country exists, the stats are the following:')
-                    console.log(element)
-
-                    let dataObject = element;
-
+                    console.log("Country Found")
                     statsDiv.style = "d-block"
+
+
                     statsDiv.innerHTML = `<div id="statsDiv">
-                    <h3>${ element['Country']}</h3>
+                    <h3>${ country['Country']}</h3>
                         <ul>
-                            <li>Number of New confirmed cases : ${dataObject["NewConfirmed"]}</li>
-                            <li>Total Confirmed cases :${dataObject['TotalConfirmed']}</li>
-                            <li>New Recorded Deaths : ${dataObject["NewDeaths"]}</li>
-                            <li>Total Number of Deaths : ${dataObject['TotalDeaths']}</li>
-                            <li>Number of people who recovered recently :${dataObject['NewRecovered']}</li>
-                            <li>Total number of people who have successfully recovered : ${dataObject['TotalRecovered']} </li>
+                            <li>Number of New confirmed cases : ${country["NewConfirmed"]}</li>
+                            <li>Total Confirmed cases :${country['TotalConfirmed']}</li>
+                            <li>New Recorded Deaths : ${country["NewDeaths"]}</li>
+                            <li>Total Number of Deaths : ${country['TotalDeaths']}</li>
+                            <li>Number of people who recovered recently :${country['NewRecovered']}</li>
+                            <li>Total number of people who have successfully recovered : ${country['TotalRecovered']} </li>
                     </ul>
                     </div>`
+                    break;
+
 
                 }
+                else {
+                    console.log("country not found")
+                    statsDiv.innerHTML = `<h3>Country not found!</h3>`
+                }
+
+            }
+        })
 
 
-            })
 
 
-        }).catch(error => console.log('error', error));
+        .catch(error => console.log('error', error));
 
 }
 
@@ -76,11 +84,5 @@ submitBtn.addEventListener("click", () => {
 
 
 })
-
-//document.getElementById('searchForm').addEventListener('submit', function (e) {
-//    search(document.getElementById('searchText'));
-//    e.preventDefault();
-//}, false);
-
 
 

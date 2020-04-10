@@ -72,12 +72,12 @@ function getData() {
                     statsDiv.innerHTML = `<div id="statsDiv">
                     <h3>${ country['Country']}</h3>
                         <ul>
-                            <li>Number of New confirmed cases : ${country["NewConfirmed"]}</li>
-                            <li>Total Confirmed cases :${country['TotalConfirmed']}</li>
-                            <li>New Recorded Deaths : ${country["NewDeaths"]}</li>
-                            <li>Total Number of Deaths : ${country['TotalDeaths']}</li>
-                            <li>Number of people who recovered recently :${country['NewRecovered']}</li>
-                            <li>Total number of people who have successfully recovered : ${country['TotalRecovered']} </li>
+                            <li>Number of New confirmed cases : <b>${country["NewConfirmed"]}</b></li>
+                            <li>Total Confirmed cases : <b>${country['TotalConfirmed']}</b></li>
+                            <li>New Recorded Deaths : <b>${country["NewDeaths"]}</b></li>
+                            <li>Total Number of Deaths : <b>${country['TotalDeaths']}</b></li>
+                            <li>Number of people who recovered recently : <b>${country['NewRecovered']}</b></li>
+                            <li>Total number of people who have successfully recovered : <b>${country['TotalRecovered']}</b> </li>
                     </ul>
                     </div>`
                     break;

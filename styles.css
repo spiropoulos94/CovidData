@@ -1,21 +1,17 @@
 form {
-    padding:5%;
+  padding: 5%;
 }
 
 #banner {
-    background-color:rgb(197, 23, 23);
-    color:white;
+  background-color: rgb(197, 23, 23);
+  color: white;
 }
 
 button {
-    margin-top: 4vh !important
+  margin-top: 4vh !important;
 }
-
-
 
 a {
-    color:white !important
-    font-style:italic;
+  color: white !important;
+  font-style: italic;
 }
-
-
